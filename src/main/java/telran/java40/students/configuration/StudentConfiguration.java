@@ -1,0 +1,23 @@
+package telran.java40.students.configuration;
+
+import org.modelmapper.ModelMapper;
+import org.modelmapper.config.Configuration.AccessLevel;
+import org.modelmapper.convention.MatchingStrategies;
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
+
+
+@Configuration //or Copmponent  - or Bean below, above the method
+public class StudentConfiguration {
+	
+	@Bean
+	public ModelMapper getModelMapper() {
+		ModelMapper modelMapper= new ModelMapper();
+		modelMapper.getConfiguration()
+		.setFieldMatchingEnabled(true)
+		.setFieldAccessLevel(AccessLevel.PRIVATE)
+		.setMatchingStrategy(MatchingStrategies.STRICT);// set the coinside of field - strict or loose
+		return modelMapper;
+	}
+
+}
